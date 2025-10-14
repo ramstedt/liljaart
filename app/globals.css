@@ -81,6 +81,7 @@
 :root {
   --background: #111111;
   --foreground: #f0eee8;
+  --nav-height: 80px;
 }
 
 html {
@@ -89,6 +90,7 @@ html {
 
 html,
 body {
+  scroll-behavior: smooth;
   max-width: 100vw;
   overflow-x: hidden;
 }

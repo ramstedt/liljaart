@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import styles from './Form.module.css';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import CtaButton from '../CtaButton/CtaButton';
 
 export default function Form() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -66,16 +67,10 @@ export default function Form() {
         <div className={styles.recaptchaWrapper}>
           <ReCAPTCHA ref={recaptchaRef} sitekey={siteKey} />
         </div>
-        <button type='submit' disabled={submitting}>
-          {submitting ? (
-            'Skickar...'
-          ) : (
-            <>
-              Skicka <IoIosArrowRoundForward />
-            </>
-          )}
-        </button>
-        {status && <p className='text-sm'>{status}</p>}
+        <CtaButton type='submit' loading={submitting} color='dark'>
+          Skicka
+        </CtaButton>
+        {status && <p>{status}</p>}
       </form>
     </section>
   );

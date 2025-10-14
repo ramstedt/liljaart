@@ -38,39 +38,6 @@
   font-family: var(--font-poppins);
 }
 
-.contactForm button {
-  font-family: 'Mattone-Regular';
-  text-transform: uppercase;
-  background-color: #000;
-  border: 1px solid #fff;
-  color: #fff;
-  border-radius: 29px 29px 29px 0px;
-  width: 195px;
-  height: 43px;
-  margin: 0 auto;
-  margin-top: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contactForm button:hover {
-  background-color: #fff;
-  border: 1px solid #000;
-  color: #000;
-}
-
-.contactForm button svg {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.3s ease;
-}
-
-.contactForm button:hover svg {
-  transform: translateX(4px);
-}
-/* Wrap the reCAPTCHA */
 .recaptchaWrapper {
   display: flex;
   justify-content: center; /* center it horizontally */

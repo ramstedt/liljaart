@@ -1,0 +1,47 @@
+.button {
+  font-family: 'Mattone-Regular';
+  text-transform: uppercase;
+  border-radius: 29px 29px 29px 0px;
+  width: fit-content;
+  padding: 0 2rem;
+  height: 43px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button svg {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.button:hover svg {
+  transform: translateX(4px);
+}
+
+.dark {
+  background-color: #000;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.dark:hover {
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+}
+
+.gold {
+  background-color: transparent;
+  border: 1px solid #000;
+  color: #000;
+}
+
+.gold:hover {
+  color: rgba(186, 145, 107, 1);
+  border: 1px solid rgba(186, 145, 107, 1);
+}

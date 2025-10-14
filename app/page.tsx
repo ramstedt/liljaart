@@ -11,18 +11,10 @@ import { FaInstagram } from 'react-icons/fa';
 import Link from 'next/link';
 import Form from '@/components/Form/Form';
 import { useState } from 'react';
+import CtaButton from '@/components/CtaButton/CtaButton';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-    setIsOpen(false);
-  };
 
   return (
     <div className={styles.page}>
@@ -34,21 +26,20 @@ export default function Home() {
               <span className={styles.logoLastName}>lilja</span>
             </div>
             <div className={styles.navLinks}>
-              <Link href='#om' onClick={(e) => handleNav(e, 'om')}>
+              <Link href='#om' onClick={() => setIsOpen(false)}>
                 Om
               </Link>
-              <Link href='#event' onClick={(e) => handleNav(e, 'event')}>
+              <Link href='#event' onClick={() => setIsOpen(false)}>
                 Event
               </Link>
-              <Link href='#text' onClick={(e) => handleNav(e, 'text')}>
-                Text
+              <Link href='#kurser' onClick={() => setIsOpen(false)}>
+                Kurser
               </Link>
-              <Link href='#kontakt' onClick={(e) => handleNav(e, 'kontakt')}>
+              <Link href='#kontakt' onClick={() => setIsOpen(false)}>
                 Kontakt
               </Link>
             </div>
 
-            {/* Burger button (top-right) */}
             <button
               className={styles.burger}
               aria-label='Toggle menu'
@@ -63,16 +54,16 @@ export default function Home() {
 
             <div className={styles.menuPanel} id='primaryNav'>
               <div className={styles.navLinks}>
-                <Link href='#om' onClick={(e) => handleNav(e, 'om')}>
+                <Link href='#om' onClick={() => setIsOpen(false)}>
                   Om
                 </Link>
-                <Link href='#event' onClick={(e) => handleNav(e, 'event')}>
+                <Link href='#event' onClick={() => setIsOpen(false)}>
                   Event
                 </Link>
-                <Link href='#text' onClick={(e) => handleNav(e, 'text')}>
-                  Text
+                <Link href='#kurser' onClick={() => setIsOpen(false)}>
+                  Kurser
                 </Link>
-                <Link href='#kontakt' onClick={(e) => handleNav(e, 'kontakt')}>
+                <Link href='#kontakt' onClick={() => setIsOpen(false)}>
                   Kontakt
                 </Link>
               </div>
@@ -98,7 +89,10 @@ export default function Home() {
             <div className={styles.introIngress}>
               Konstnär, instruktör i måleri och tatuerare i Göteborg
             </div>
-            <div className={styles.introHello} id='om'>
+            <div
+              className={`${styles.introHello} ${styles.scrollTarget}`}
+              id='om'
+            >
               Hej! Jag heter
               <br />
               Karin Lilja
@@ -110,11 +104,11 @@ export default function Home() {
             <p>
               Jag är utbildad inom klassisk realism och arbetar heltid som
               konstnär och instruktör i måleri. Min stil kännetecknas av ljusa
-              pastelltoner och porträtt med ett levande ljus - där klassiskt
+              pastelltoner och porträtt med ett levande ljus där klassiskt
               hantverk möter ett modernt uttryck. Även om porträttmåleri ligger
               mig varmast om hjärtat är jag nyfiken och öppen för att utforska
               nya motiv och tekniker. Jag är en snabb och intuitiv målare, och
-              målar gärna live på event - en uppskattad upplevelse där gästerna
+              målar gärna live på event; en uppskattad upplevelse där gästerna
               får se ett realistiskt konstverk växa fram på bara några timmar.
               Till vardags driver jag ateljé och keramikverkstaden La Fabrique,
               där jag arbetar med beställningsmåleri och håller kurser i
@@ -131,7 +125,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={styles.textImgWrapper} id='event'>
+        <section
+          className={`${styles.textImgWrapper} ${styles.scrollTarget}`}
+          id='event'
+        >
           <div className={styles.parent}>
             <div className={styles.div1}>
               <Image src={bg} alt='' />
@@ -165,23 +162,23 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className={styles.textBlockLight} id='text'>
+        <section
+          className={`${styles.glossier} ${styles.scrollTarget}`}
+          id='glossier'
+        >
           <div>
-            <h2 className={styles.header2}>Titel</h2>
+            <h2 className={styles.header2}>Kurser</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. A fugit
-              ea, ullam maiores veniam ad ipsa delectus reprehenderit pariatur
-              sit voluptas fuga sint atque quibusdam possimus aperiam
-              voluptatibus? Delectus maiores dolores a aperiam nisi unde
-              sapiente placeat. Corporis neque obcaecati debitis quo. Esse
-              obcaecati maiores reiciendis, tempora iusto magni autem mollitia,
-              sequi, et asperiores voluptas. Sapiente porro necessitatibus
-              molestias sit, unde natus optio eius quae deserunt perspiciatis
-              delectus quasi fugiat quisquam, minima sed magnam neque iusto
-              beatae! Nemo impedit itaque ipsam magnam? Adipisci maiores aliquam
-              quaerat accusantium, quisquam vitae animi asperiores laborum?
-              Accusantium sequi quisquam sapiente modi commodi doloremque eius.
+              Jag erbjuder kurser i akvarell och oljemåleri, både för events och
+              för privatpersoner. Läs mer och boka genom vår ateljés hemsida!
             </p>
+            <CtaButton
+              href='https://lafabrique.se'
+              target='_blank'
+              color='gold'
+            >
+              Lafabrique.se
+            </CtaButton>
           </div>
         </section>
         <section>
@@ -191,25 +188,24 @@ export default function Home() {
           <div className={styles.footerName}>KARIN</div>
           <div className={styles.footerLastName}>lilja</div>
           <div className={styles.footerTitle}>
-            Målare, tatuerare och entreprenör i Göteborg
+            Konstnär, instruktör i måleri och tatuerare i Göteborg
           </div>
           <div className={styles.socialMedia}>
             <Link href='/' target='_blank'>
               <FaInstagram />
             </Link>
           </div>
-          <div>
-            {' '}
-            <Link href='#om' onClick={(e) => handleNav(e, 'om')}>
+          <div className={styles.footerLinks}>
+            <Link href='#om' onClick={() => setIsOpen(false)}>
               Om
             </Link>
-            <Link href='#event' onClick={(e) => handleNav(e, 'event')}>
+            <Link href='#event' onClick={() => setIsOpen(false)}>
               Event
             </Link>
-            <Link href='#text' onClick={(e) => handleNav(e, 'text')}>
-              Text
+            <Link href='#kurser' onClick={() => setIsOpen(false)}>
+              Kurser
             </Link>
-            <Link href='#kontakt' onClick={(e) => handleNav(e, 'kontakt')}>
+            <Link href='#kontakt' onClick={() => setIsOpen(false)}>
               Kontakt
             </Link>
           </div>

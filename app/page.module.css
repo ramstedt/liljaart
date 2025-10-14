@@ -6,6 +6,11 @@
   font-family: var(--font-poppins);
 }
 
+.page,
+.main {
+  scroll-behavior: smooth;
+}
+
 .hero {
   display: flex;
   flex-direction: column;
@@ -270,12 +275,21 @@
   width: 30px;
 }
 
+.footerLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.footerLinks a:hover {
+  color: rgba(186, 145, 107, 1);
+}
+
 .textBlock {
   padding-bottom: 2rem;
 }
 
 .textBlock div,
-.textBlockLight div {
+.glossier div {
   margin: 2rem 5%;
   max-width: 1440px;
 }
@@ -289,11 +303,16 @@
   margin: 1rem 0;
   text-transform: uppercase;
 }
-.textBlockLight {
+.glossier {
   background-color: #f0eee8;
   color: black;
   margin: 0;
   padding: 2rem 5%;
+  text-align: center;
+}
+
+.glossier div p {
+  font-size: 1.2rem;
 }
 
 @media screen and (min-width: 375px) {
@@ -441,6 +460,11 @@
   transform: translateX(6px);
 }
 
+.scrollTarget {
+  /* scroll-margin-top: var(--nav-height, 80px); */
+  scroll-behavior: smooth;
+}
+
 @media (min-width: 768px) {
   .burger,
   .overlay,
@@ -518,6 +542,7 @@
     width: 2em;
     height: 2em;
     background: url('/checkmark.svg') no-repeat center / contain;
+    mask: initial;
   }
 
   .utbildning {
@@ -613,6 +638,10 @@
 
   .div1 {
     width: 50vw;
+  }
+
+  .textBlock {
+    padding-top: 3rem;
   }
 }
 
