@@ -33,8 +33,12 @@ export default function Form() {
       setStatus('Success! Your message was verified and sent.');
       e.currentTarget.reset();
       recaptchaRef.current?.reset();
-    } catch (err: any) {
-      setStatus(err.message || 'Something went wrong.');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setStatus(err.message);
+      } else {
+        setStatus('Something went wrong.');
+      }
     } finally {
       setSubmitting(false);
     }
