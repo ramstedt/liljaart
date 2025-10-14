@@ -427,9 +427,11 @@
   box-shadow: -8px 0 24px rgba(0, 0, 0, 0.3);
 }
 .menuPanel .navLinks {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 2rem;
+  align-items: flex-end;
 }
 .menuPanel .navLinks a {
   color: inherit;
