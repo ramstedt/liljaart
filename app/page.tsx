@@ -1,29 +1,89 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './page.module.css';
 import headshot from '../public/headshot.webp';
 import woman from '../public/woman.webp';
 import ludwig from '../public/ludwig.webp';
 import bg from '../public/bg.jpeg';
-import drink from '../public/drink.jpeg';
+import cheers from '../public/cheers.jpg';
 import { FaInstagram } from 'react-icons/fa';
 import Link from 'next/link';
+import Form from '@/components/Form/Form';
+import { useState } from 'react';
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setIsOpen(false);
+  };
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <section className={styles.hero}>
-          <nav className={styles.navbar}>
+          <nav className={`${styles.navbar} ${isOpen ? styles.menuOpen : ''}`}>
             <div className={styles.logo}>
               <span className={styles.logoFirstName}>Karin</span>{' '}
               <span className={styles.logoLastName}>lilja</span>
             </div>
-            <div>Links</div>
+            <div className={styles.navLinks}>
+              <Link href='#om' onClick={(e) => handleNav(e, 'om')}>
+                Om
+              </Link>
+              <Link href='#event' onClick={(e) => handleNav(e, 'event')}>
+                Event
+              </Link>
+              <Link href='#text' onClick={(e) => handleNav(e, 'text')}>
+                Text
+              </Link>
+              <Link href='#kontakt' onClick={(e) => handleNav(e, 'kontakt')}>
+                Kontakt
+              </Link>
+            </div>
+
+            {/* Burger button (top-right) */}
+            <button
+              className={styles.burger}
+              aria-label='Toggle menu'
+              aria-expanded={isOpen}
+              aria-controls='primaryNav'
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <span />
+            </button>
+
+            <div className={styles.overlay} onClick={() => setIsOpen(false)} />
+
+            <div className={styles.menuPanel} id='primaryNav'>
+              <div className={styles.navLinks}>
+                <Link href='#om' onClick={(e) => handleNav(e, 'om')}>
+                  Om
+                </Link>
+                <Link href='#event' onClick={(e) => handleNav(e, 'event')}>
+                  Event
+                </Link>
+                <Link href='#text' onClick={(e) => handleNav(e, 'text')}>
+                  Text
+                </Link>
+                <Link href='#kontakt' onClick={(e) => handleNav(e, 'kontakt')}>
+                  Kontakt
+                </Link>
+              </div>
+            </div>
           </nav>
           <div className={styles.heroIngressWrapper}>
-            <div className={styles.heroIngressOne}>NÄR STUNDEN BLIR KONST</div>
+            <div className={styles.heroIngressOne}>
+              NÄR ÖGONBLICKET BLIR TILL KONST
+            </div>
             <div className={styles.heroIngressTwo}>
-              Levande konst, skapad på plats
+              Upplev skapandet - i realtid
             </div>
           </div>
         </section>
@@ -36,69 +96,123 @@ export default function Home() {
             <Image className={styles.imgTwo} src={woman} alt='' />
 
             <div className={styles.introIngress}>
-              Målare, tatuerare och entrepenör från Göteborg
+              Konstnär, instruktör i måleri och tatuerare i Göteborg
             </div>
-            <div className={styles.introHello}>
+            <div className={styles.introHello} id='om'>
               Hej! Jag heter
               <br />
               Karin Lilja
             </div>
           </div>
         </section>
-        <section className={styles.textImgWrapper}>
+        <section className={styles.textBlock}>
+          <div>
+            <p>
+              Jag är utbildad inom klassisk realism och arbetar heltid som
+              konstnär och instruktör i måleri. Min stil kännetecknas av ljusa
+              pastelltoner och porträtt med ett levande ljus - där klassiskt
+              hantverk möter ett modernt uttryck. Även om porträttmåleri ligger
+              mig varmast om hjärtat är jag nyfiken och öppen för att utforska
+              nya motiv och tekniker. Jag är en snabb och intuitiv målare, och
+              målar gärna live på event - en uppskattad upplevelse där gästerna
+              får se ett realistiskt konstverk växa fram på bara några timmar.
+              Till vardags driver jag ateljé och keramikverkstaden La Fabrique,
+              där jag arbetar med beställningsmåleri och håller kurser i
+              oljemåleri och akvarell i min egen ateljé.
+              <br />
+              <br />
+            </p>
+            <h2 className={styles.header2}>Utbildning</h2>
+            <div className={styles.utbildning}>
+              <ul>
+                <li>Florence Academy of Art (2019) - 3 år klassisk realism</li>
+                <li>Dômen Konstskola (2011) - 2 år måleri</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section className={styles.textImgWrapper} id='event'>
           <div className={styles.parent}>
             <div className={styles.div1}>
               <Image src={bg} alt='' />
             </div>
-            <Image className={styles.div2} src={drink} alt='' />
+            <Image className={styles.div2} src={cheers} alt='' />
             <div className={styles.div3}>
               <div className={styles.textImgIngress}>Låt mig gissa...</div>
               <div>
-                <h2>Ni är trötta på event som känns likadana</h2>
+                <h2>Ni är trötta på event som känns som en repris</h2>
               </div>
               <div>
                 <span className={styles.textImgIngress2}>
-                  Känner ni igen er i den här känslan?
+                  Ge gästerna något oväntat - en upplevelse som fångar stunden
+                  och väcker samtal.
                 </span>
                 <ul className={styles.checkList}>
-                  <li>
-                    Ni söker en upplevelse som speglar er energi och atmosfär.
+                  <li className={styles.checkmark}>
+                    Anlita en livekonstnär som förvandlar ögonblicket till
+                    konst.
                   </li>
-                  <li>
-                    Ni vill skapa något levande, något som händer här och nu.
+                  <li className={styles.checkmark}>
+                    Upplev hur ett realistiskt måleri växer fram inför allas
+                    ögon - klart på bara några timmar.
                   </li>
-                  <li>Ni vill att ert event ska kännas levande och äkta.</li>
+                  <li className={styles.checkmark}>
+                    Skapa en levande, personlig och oförglömlig atmosfär som
+                    gästerna minns långt efteråt.
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
+        <section className={styles.textBlockLight} id='text'>
+          <div>
+            <h2 className={styles.header2}>Titel</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. A fugit
+              ea, ullam maiores veniam ad ipsa delectus reprehenderit pariatur
+              sit voluptas fuga sint atque quibusdam possimus aperiam
+              voluptatibus? Delectus maiores dolores a aperiam nisi unde
+              sapiente placeat. Corporis neque obcaecati debitis quo. Esse
+              obcaecati maiores reiciendis, tempora iusto magni autem mollitia,
+              sequi, et asperiores voluptas. Sapiente porro necessitatibus
+              molestias sit, unde natus optio eius quae deserunt perspiciatis
+              delectus quasi fugiat quisquam, minima sed magnam neque iusto
+              beatae! Nemo impedit itaque ipsam magnam? Adipisci maiores aliquam
+              quaerat accusantium, quisquam vitae animi asperiores laborum?
+              Accusantium sequi quisquam sapiente modi commodi doloremque eius.
+            </p>
+          </div>
+        </section>
         <section>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. A fugit ea,
-          ullam maiores veniam ad ipsa delectus reprehenderit pariatur sit
-          voluptas fuga sint atque quibusdam possimus aperiam voluptatibus?
-          Delectus maiores dolores a aperiam nisi unde sapiente placeat.
-          Corporis neque obcaecati debitis quo. Esse obcaecati maiores
-          reiciendis, tempora iusto magni autem mollitia, sequi, et asperiores
-          voluptas. Sapiente porro necessitatibus molestias sit, unde natus
-          optio eius quae deserunt perspiciatis delectus quasi fugiat quisquam,
-          minima sed magnam neque iusto beatae! Nemo impedit itaque ipsam
-          magnam? Adipisci maiores aliquam quaerat accusantium, quisquam vitae
-          animi asperiores laborum? Accusantium sequi quisquam sapiente modi
-          commodi doloremque eius.
+          <Form />
         </section>
         <footer className={styles.footer}>
           <div className={styles.footerName}>KARIN</div>
           <div className={styles.footerLastName}>lilja</div>
           <div className={styles.footerTitle}>
-            Målare, tatuerare och entrepenör i Göteborg
+            Målare, tatuerare och entreprenör i Göteborg
           </div>
           <div className={styles.socialMedia}>
             <Link href='/' target='_blank'>
               <FaInstagram />
             </Link>
           </div>
-          <div>länkar</div>
+          <div>
+            {' '}
+            <Link href='#om' onClick={(e) => handleNav(e, 'om')}>
+              Om
+            </Link>
+            <Link href='#event' onClick={(e) => handleNav(e, 'event')}>
+              Event
+            </Link>
+            <Link href='#text' onClick={(e) => handleNav(e, 'text')}>
+              Text
+            </Link>
+            <Link href='#kontakt' onClick={(e) => handleNav(e, 'kontakt')}>
+              Kontakt
+            </Link>
+          </div>
         </footer>
       </main>
     </div>

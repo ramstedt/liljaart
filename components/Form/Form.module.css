@@ -1,0 +1,107 @@
+.formSection {
+  margin: 5rem 5%;
+}
+.formSection h2 {
+  text-align: center;
+  font-family: 'Boska';
+  font-size: clamp(2rem, 5vw + 0.5rem, 2.5rem);
+  font-weight: 600;
+  line-height: 2.6rem;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+.formSection p {
+  text-align: center;
+}
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 1rem 12%;
+}
+
+.inputFields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contactForm input {
+  height: 41px;
+  font-family: var(--font-poppins);
+  border: none;
+  padding: 1rem;
+}
+.contactForm textarea {
+  min-height: 10rem;
+  padding: 1rem;
+  font-family: var(--font-poppins);
+}
+
+.contactForm button {
+  font-family: 'Mattone-Regular';
+  text-transform: uppercase;
+  background-color: #000;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 29px 29px 29px 0px;
+  width: 195px;
+  height: 43px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactForm button:hover {
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+}
+
+.contactForm button svg {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.contactForm button:hover svg {
+  transform: translateX(4px);
+}
+/* Wrap the reCAPTCHA */
+.recaptchaWrapper {
+  display: flex;
+  justify-content: center; /* center it horizontally */
+  width: 100%; /* match the form width */
+  overflow: hidden; /* hide overflow caused by scaling */
+}
+
+.recaptchaWrapper > div {
+  transform: scale(80%);
+  transform-origin: center;
+}
+
+@media screen and (min-width: 375px) {
+  .recaptchaWrapper > div {
+    transform: initial;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .contactForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+  }
+
+  .inputFields {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  .contactForm textarea {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+}
