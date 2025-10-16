@@ -33,7 +33,8 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ ok: true });
-  } catch (e) {
+  } catch (error) {
+    console.error('reCAPTCHA route error:', error);
     return NextResponse.json(
       { ok: false, error: 'Server error' },
       { status: 500 }

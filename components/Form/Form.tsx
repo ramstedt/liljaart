@@ -56,8 +56,12 @@ export default function Form() {
       setReferrer('');
       setMessage('');
       resetCaptcha();
-    } catch (err: any) {
-      setError(err.message || 'An error occurred.');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An error occurred.');
+      }
       resetCaptcha();
     }
   }
@@ -102,7 +106,7 @@ export default function Form() {
         <ReCAPTCHA
           ref={recaptchaRef}
           sitekey={siteKey}
-          onChange={(val) => setCaptchaToken(val)}
+          onChange={(val: string | null) => setCaptchaToken(val)}
         />
         <CtaButton type='submit'>Skicka</CtaButton>
         {error && <p className={styles.error}>{error}</p>}
