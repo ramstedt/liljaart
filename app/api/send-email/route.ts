@@ -1,29 +1,28 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
+export const runtime = 'nodejs';
 
-  const { name, email, referrer, message, token } = req.body;
-
-  if (!token) {
-    return res.status(400).json({ error: 'Missing reCAPTCHA token' });
-  }
-
+export async function POST(req: NextRequest) {
   try {
-    const ipHeader =
-      (req.headers['x-forwarded-for'] as string | undefined) || '';
-    const clientIp =
-      ipHeader.split(',')[0]?.trim() || req.socket.remoteAddress || undefined;
+    const { name, email, referrer, message, token } = await req.json();
+
+    if (!token) {
+      return NextResponse.json(
+        { error: 'Missing reCAPTCHA token' },
+        { status: 400 }
+      );
+    }
+
+    const ipHeader = req.headers.get('x-forwarded-for') ?? '';
+    const clientIp = ipHeader.split(',')[0]?.trim() || undefined;
     const isHuman = await verifyRecaptchaToken(token, clientIp);
 
     if (!isHuman) {
-      return res.status(400).json({ error: 'reCAPTCHA verification failed' });
+      return NextResponse.json(
+        { error: 'reCAPTCHA verification failed' },
+        { status: 400 }
+      );
     }
 
     const transporter = nodemailer.createTransport({
@@ -49,10 +48,13 @@ export default async function handler(
       replyTo: email,
     });
 
-    res.status(200).json({ success: true });
+    return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
     console.error('Error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
   }
 }
 
