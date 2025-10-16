@@ -1,76 +1,103 @@
-'use client';
-
-import { useRef, useState } from 'react';
+import { useRef, useState, FormEvent } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import styles from './Form.module.css';
-import { IoIosArrowRoundForward } from 'react-icons/io';
-import CtaButton from '../CtaButton/CtaButton';
 
 export default function Form() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [submitting, setSubmitting] = useState(false);
-  const [status, setStatus] = useState<string | null>(null);
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!;
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [referrer, setReferrer] = useState('');
+  const [message, setMessage] = useState('');
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  if (!siteKey) {
+    return (
+      <section className={styles.formSection}>
+        <p>reCAPTCHA nyckel saknas.</p>
+      </section>
+    );
+  }
+
+  function resetCaptcha() {
+    try {
+      recaptchaRef.current?.reset();
+    } catch {}
+    setCaptchaToken(null);
+  }
+
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setSubmitting(true);
-    setStatus(null);
+    setError(null);
+    setSuccess(false);
 
     try {
-      const token = recaptchaRef.current?.getValue();
+      const token = captchaToken;
       if (!token) throw new Error('Please complete the reCAPTCHA.');
-      const verify = await fetch('/api/recaptcha', {
+
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token }),
-      }).then((r) => r.json());
+        body: JSON.stringify({ name, email, referrer, message, token }),
+      });
 
-      if (!verify.ok) {
-        recaptchaRef.current?.reset();
-        throw new Error('reCAPTCHA failed. Please try again.');
+      if (!response.ok) {
+        resetCaptcha();
+        throw new Error('Failed to send message.');
       }
 
-      setStatus('Success! Your message was verified and sent.');
-      e.currentTarget.reset();
-      recaptchaRef.current?.reset();
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setStatus(err.message);
-      } else {
-        setStatus('Something went wrong.');
-      }
-    } finally {
-      setSubmitting(false);
+      setSuccess(true);
+      setName('');
+      setEmail('');
+      setReferrer('');
+      setMessage('');
+      resetCaptcha();
+    } catch (err: any) {
+      setError(err.message || 'An error occurred.');
+      resetCaptcha();
     }
   }
 
   return (
-    <section className={styles.formSection} id='kontakt'>
-      <h2>Allt börjar med ett penseldrag - och ett hej</h2>
-      <p>
-        Fyll i formuläret nedan - jag ser fram emot att höra mer om ert event
-        och skapa något vackert tillsammans.
-      </p>
-      <form onSubmit={handleSubmit} className={styles.contactForm}>
-        <div className={styles.inputFields}>
-          <input type='text' name='name' placeholder='Ditt Namn' required />
-          <input type='email' name='email' placeholder='Din Email' required />
-          <input
-            type='text'
-            name='referrer'
-            placeholder='Hur hittade du mig?'
-            required
-          />
-        </div>
-        <textarea name='message' placeholder='Ditt meddelande' required />
-        <div className={styles.recaptchaWrapper}>
-          <ReCAPTCHA ref={recaptchaRef} sitekey={siteKey} />
-        </div>
-        <CtaButton type='submit' loading={submitting} color='dark'>
-          Skicka
-        </CtaButton>
-        {status && <p>{status}</p>}
+    <section className={styles.formSection}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input
+          type='text'
+          placeholder='Namn'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type='email'
+          placeholder='Email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type='text'
+          placeholder='Hur hittade du mig?'
+          value={referrer}
+          onChange={(e) => setReferrer(e.target.value)}
+        />
+        <textarea
+          placeholder='Meddelande'
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          required
+        />
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={siteKey}
+          onChange={(val) => setCaptchaToken(val)}
+        />
+        {error && <p className={styles.error}>{error}</p>}
+        {success && <p className={styles.success}>Meddelandet skickades!</p>}
+        <button type='submit'>Skicka</button>
       </form>
     </section>
   );
