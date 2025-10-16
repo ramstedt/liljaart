@@ -63,7 +63,12 @@ export default function Form() {
   }
 
   return (
-    <section className={styles.formSection}>
+    <section className={styles.formSection} id='kontakt'>
+      <h2>Allt börjar med ett penseldrag - och ett hej</h2>
+      <p>
+        Fyll i formuläret nedan - jag ser fram emot att höra mer om dig och
+        skapa något tillsammans.
+      </p>
       <form onSubmit={handleSubmit} className={styles.contactForm}>
         <div className={styles.inputFields}>
           <input

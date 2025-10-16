@@ -164,7 +164,7 @@ export default function Home() {
         </section>
         <section
           className={`${styles.glossier} ${styles.scrollTarget}`}
-          id='glossier'
+          id='kurser'
         >
           <div>
             <h2 className={styles.header2}>Kurser</h2>
