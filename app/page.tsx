@@ -280,6 +280,11 @@ export default function Home() {
               Kontakt
             </Link>
           </div>
+          <small className={styles.attributions}>
+            © 2025 Karin Lilja
+            <br />
+            Sidan är designad och byggd av emma.ramstedt(at)gmail.com
+          </small>
         </footer>
       </main>
     </div>

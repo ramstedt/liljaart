@@ -338,6 +338,13 @@
   font-size: 1.2rem;
 }
 
+.attributions {
+  margin-top: 2rem;
+  text-align: center;
+  color: rgb(66, 66, 66);
+  font-size: 9px;
+}
+
 @media screen and (min-width: 375px) {
   .introParent {
     grid-template-rows: repeat(9, 2.4rem);
