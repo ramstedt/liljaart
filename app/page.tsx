@@ -259,6 +259,7 @@ export default function Home() {
           <div className={styles.socialMedia}>
             <Link href='/' target='_blank'>
               <FaInstagram />
+              <small>Instagram</small>
             </Link>
           </div>
           <div className={styles.footerLinks}>

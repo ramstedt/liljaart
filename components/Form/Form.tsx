@@ -147,20 +147,17 @@ export default function Form() {
           />
         </div>
 
-        <div
-          className={styles.recaptcha}
-          role='group'
-          aria-labelledby='captchaLabel'
-        >
-          <span id='captchaLabel' className={styles.srOnly}>
+        <fieldset className={styles.recaptcha} aria-required='true'>
+          <legend className={styles.srOnly}>
             Spam-skydd (reCAPTCHA) <span aria-hidden='true'>*</span>
-          </span>
+          </legend>
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey={siteKey}
             onChange={(val: string | null) => setCaptchaToken(val)}
+            aria-label='Spam-skydd (reCAPTCHA)'
           />
-        </div>
+        </fieldset>
 
         <CtaButton
           type='submit'
