@@ -309,6 +309,14 @@
   max-width: 1020px;
 }
 
+.beigeBg {
+  background-color: #f0eee8;
+}
+
+.whiteBg {
+  background-color: #fff;
+}
+
 .header2 {
   text-align: center;
   font-family: 'Boska';
