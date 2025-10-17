@@ -106,11 +106,23 @@ export default function Home() {
           className={styles.introWrapper}
         >
           <div className={styles.introParent}>
-            <Image className={styles.headshot} src={headshot} alt='' />
+            <Image
+              className={styles.headshot}
+              src={headshot}
+              alt='Foto på Karin Lilja sittandes vid ett stafli. Hon håller i en pensel och palett.'
+            />
 
-            <Image className={styles.imgOne} src={ludwig} alt='' />
+            <Image
+              className={styles.imgOne}
+              src={ludwig}
+              alt='En oljemålning som föreställer ett porträtt på en ung pojke med blont hår och blå ögon'
+            />
 
-            <Image className={styles.imgTwo} src={woman} alt='' />
+            <Image
+              className={styles.imgTwo}
+              src={woman}
+              alt='En närbild på en oljemålning. Bilden visar en del av målningen som föreställer en kvinna med långt brunt hår som blundar och håller en annan kvinna i händerna.'
+            />
 
             <div className={styles.introIngress}>
               Konstnär, instruktör i måleri och tatuerare i Göteborg
@@ -167,9 +179,16 @@ export default function Home() {
         >
           <div className={styles.parent}>
             <div className={styles.div1}>
-              <Image src={bg} alt='' />
+              <Image
+                src={bg}
+                alt='Ett svartvitt foto av en skugga från ett palmblad mot en vit vägg'
+              />
             </div>
-            <Image className={styles.div2} src={cheers} alt='' />
+            <Image
+              className={styles.div2}
+              src={cheers}
+              alt='Karin Lilja skålar framför sitt stafli'
+            />
             <div className={styles.div3}>
               <div className={styles.textImgIngress}>Låt mig gissa...</div>
               <div>

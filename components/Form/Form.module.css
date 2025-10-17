@@ -2,6 +2,13 @@
   margin: 3rem auto;
   max-width: 304px;
 }
+
+.formSection label,
+.formSection span {
+  visibility: hidden;
+  display: none;
+}
+
 .formSection h2 {
   text-align: center;
   font-family: 'Boska';
@@ -26,17 +33,23 @@
   gap: 1.5rem;
 }
 
+.contactFrom div {
+  width: 100%;
+}
+
 .contactForm input {
   height: 41px;
   font-family: var(--font-poppins);
   border: none;
   padding: 1rem;
+  width: 100%;
 }
 .contactForm textarea {
   min-height: 10rem;
   padding: 1rem;
   font-family: var(--font-poppins);
   border-style: none;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {

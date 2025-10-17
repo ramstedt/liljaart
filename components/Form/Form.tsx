@@ -72,43 +72,87 @@ export default function Form() {
 
   return (
     <section className={styles.formSection} id='kontakt'>
-      <h2>Allt börjar med ett penseldrag - och ett hej</h2>
+      <h2 id='contactHeading'>Allt börjar med ett penseldrag - och ett hej</h2>
       <p>
-        Fyll i formuläret nedan - jag ser fram emot att höra mer om dig och
-        skapa något tillsammans.
+        Fyll i formuläret nedan - jag ser fram emot att höra från dig!
+        <br />
+        <br />
       </p>
-      <form onSubmit={handleSubmit} className={styles.contactForm}>
+      <form
+        onSubmit={handleSubmit}
+        className={styles.contactForm}
+        aria-labelledby='contactHeading'
+      >
         <div className={styles.inputFields}>
-          <input
-            type='text'
-            placeholder='Namn'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+          <div>
+            <label htmlFor='nameInput'>
+              Namn <span aria-hidden='true'>*</span>
+            </label>
+            <input
+              id='nameInput'
+              type='text'
+              placeholder='Namn'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              aria-required='true'
+              autoComplete='name'
+            />
+          </div>
+
+          <div>
+            <label htmlFor='emailInput'>
+              Email <span aria-hidden='true'>*</span>
+            </label>
+            <input
+              id='emailInput'
+              type='email'
+              placeholder='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              aria-required='true'
+              autoComplete='email'
+              inputMode='email'
+            />
+          </div>
+
+          <div>
+            <label htmlFor='referrerInput'>Hur hittade du mig?</label>
+            <input
+              id='referrerInput'
+              type='text'
+              placeholder='Hur hittade du mig?'
+              value={referrer}
+              onChange={(e) => setReferrer(e.target.value)}
+              autoComplete='off'
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor='messageInput'>
+            Meddelande <span aria-hidden='true'>*</span>
+          </label>
+          <textarea
+            id='messageInput'
+            name='message'
+            placeholder='Meddelande'
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             required
-          />
-          <input
-            type='email'
-            placeholder='Email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type='text'
-            placeholder='Hur hittade du mig?'
-            value={referrer}
-            onChange={(e) => setReferrer(e.target.value)}
+            aria-required='true'
+            rows={5}
           />
         </div>
-        <textarea
-          name='message'
-          placeholder='Meddelande'
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          required
-        />
 
-        <div className={styles.recaptcha}>
+        <div
+          className={styles.recaptcha}
+          role='group'
+          aria-labelledby='captchaLabel'
+        >
+          <span id='captchaLabel' className='sr-only'>
+            Spam-skydd (reCAPTCHA) <span aria-hidden='true'>*</span>
+          </span>
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey={siteKey}
@@ -118,6 +162,7 @@ export default function Form() {
 
         <CtaButton
           type='submit'
+          aria-busy={submitting}
           disabled={
             success ||
             !!error ||
@@ -131,17 +176,19 @@ export default function Form() {
         >
           {submitting ? 'Skickar...' : 'Skicka'}
         </CtaButton>
-        <div></div>
-        {error && <p className={styles.error}>{error}</p>}
-        {success && (
-          <div>
-            {' '}
-            <p className={styles.success}>
+        <div aria-live='polite' aria-atomic='true'>
+          {error && (
+            <p className={styles.error} role='alert'>
+              {error}
+            </p>
+          )}
+          {success && (
+            <p className={styles.success} role='status'>
               Meddelandet skickades! Jag hör av mig till er så snart som
               möjligt.
             </p>
-          </div>
-        )}
+          )}
+        </div>
       </form>
     </section>
   );
