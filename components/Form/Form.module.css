@@ -1,5 +1,5 @@
 .formSection {
-  margin: 5rem auto;
+  margin: 3rem auto;
   max-width: 304px;
 }
 .formSection h2 {
@@ -15,7 +15,6 @@
   text-align: center;
 }
 .contactForm {
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;

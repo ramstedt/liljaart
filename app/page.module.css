@@ -286,11 +286,16 @@
 
 .textBlock {
   padding-bottom: 2rem;
+  margin: 0 5%;
 }
 
-.textBlock div,
-.glossier div {
+.textBlock div {
   margin: 2rem auto;
+  max-width: 1020px;
+}
+
+.glossier div {
+  margin: 3rem auto;
   max-width: 1020px;
 }
 
