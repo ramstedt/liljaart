@@ -57,9 +57,22 @@ export default function Home() {
               <span />
             </button>
 
-            <div className={styles.overlay} onClick={() => setIsOpen(false)} />
+            <div
+              className={styles.overlay}
+              aria-hidden={!isOpen}
+              style={{
+                pointerEvents: isOpen ? 'auto' : 'none',
+                opacity: isOpen ? 1 : 0,
+              }}
+              onClick={() => isOpen && setIsOpen(false)}
+            />
 
-            <div className={styles.menuPanel} id='primaryNav'>
+            <div
+              className={styles.menuPanel}
+              id='primaryNav'
+              aria-hidden={!isOpen}
+              style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
+            >
               <div className={styles.navLinks}>
                 <Link href='#om' onClick={() => setIsOpen(false)}>
                   Om
