@@ -147,13 +147,18 @@ export default function Home() {
           <div>
             <p>
               Jag är utbildad inom klassisk realism och arbetar heltid som
-              konstnär och instruktör i måleri. Min stil kännetecknas av ljusa
-              pastelltoner och porträtt med ett levande ljus där klassiskt
-              hantverk möter ett modernt uttryck. Även om porträttmåleri ligger
-              mig varmast om hjärtat är jag nyfiken och öppen för att utforska
-              nya motiv och tekniker. Jag är en snabb och intuitiv målare, och
-              målar gärna live på event; en uppskattad upplevelse där gästerna
-              får se ett realistiskt konstverk växa fram på bara några timmar.
+              konstnär och instruktör i måleri.
+            </p>
+            <p>
+              Min stil kännetecknas av ljusa pastelltoner och porträtt med ett
+              levande ljus där klassiskt hantverk möter ett modernt uttryck.
+              Även om porträttmåleri ligger mig varmast om hjärtat är jag
+              nyfiken och öppen för att utforska nya motiv och tekniker. Jag är
+              en snabb och intuitiv målare, och målar gärna live på event; en
+              uppskattad upplevelse där gästerna får se ett realistiskt
+              konstverk växa fram på bara några timmar.
+            </p>
+            <p>
               Till vardags driver jag ateljé och keramikverkstaden La Fabrique,
               där jag arbetar med beställningsmåleri och håller kurser i
               oljemåleri och akvarell i min egen ateljé.
