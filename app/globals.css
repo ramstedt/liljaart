@@ -139,3 +139,7 @@ ul li::before {
   mask: url('/diamond.svg') no-repeat center / contain;
   -webkit-mask: url('/diamond.svg') no-repeat center / contain;
 }
+section {
+  opacity: 1;
+  visibility: visible;
+}

@@ -12,6 +12,7 @@ export default function Form() {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
@@ -34,10 +35,11 @@ export default function Form() {
     e.preventDefault();
     setError(null);
     setSuccess(false);
+    setSubmitting(true);
 
     try {
       const token = captchaToken;
-      if (!token) throw new Error('Please complete the reCAPTCHA.');
+      if (!token) throw new Error('Vänligen slutför reCAPTCHA-testet.');
 
       const response = await fetch('/api/send-email', {
         method: 'POST',
@@ -47,7 +49,7 @@ export default function Form() {
 
       if (!response.ok) {
         resetCaptcha();
-        throw new Error('Failed to send message.');
+        throw new Error('Meddelandet misslyckades');
       }
 
       setSuccess(true);
@@ -56,6 +58,7 @@ export default function Form() {
       setReferrer('');
       setMessage('');
       resetCaptcha();
+      setSubmitting(false);
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
@@ -63,6 +66,7 @@ export default function Form() {
         setError('An error occurred.');
       }
       resetCaptcha();
+      setSubmitting(false);
     }
   }
 
@@ -103,14 +107,41 @@ export default function Form() {
           onChange={(e) => setMessage(e.target.value)}
           required
         />
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={siteKey}
-          onChange={(val: string | null) => setCaptchaToken(val)}
-        />
-        <CtaButton type='submit'>Skicka</CtaButton>
+
+        <div className={styles.recaptcha}>
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={siteKey}
+            onChange={(val: string | null) => setCaptchaToken(val)}
+          />
+        </div>
+
+        <CtaButton
+          type='submit'
+          disabled={
+            success ||
+            !!error ||
+            !captchaToken ||
+            message.trim() === '' ||
+            name.trim() === '' ||
+            email.trim() === ''
+          }
+          loading={false}
+          color={submitting ? 'light' : 'dark'}
+        >
+          {submitting ? 'Skickar...' : 'Skicka'}
+        </CtaButton>
+        <div></div>
         {error && <p className={styles.error}>{error}</p>}
-        {success && <p className={styles.success}>Meddelandet skickades!</p>}
+        {success && (
+          <div>
+            {' '}
+            <p className={styles.success}>
+              Meddelandet skickades! Jag hör av mig till er så snart som
+              möjligt.
+            </p>
+          </div>
+        )}
       </form>
     </section>
   );

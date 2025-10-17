@@ -1,5 +1,6 @@
 .formSection {
-  margin: 5rem 5%;
+  margin: 5rem auto;
+  max-width: 304px;
 }
 .formSection h2 {
   text-align: center;
@@ -14,10 +15,10 @@
   text-align: center;
 }
 .contactForm {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin: 1rem 12%;
 }
 
 .inputFields {
@@ -36,27 +37,14 @@
   min-height: 10rem;
   padding: 1rem;
   font-family: var(--font-poppins);
-}
-
-.recaptchaWrapper {
-  display: flex;
-  justify-content: center; /* center it horizontally */
-  width: 100%; /* match the form width */
-  overflow: hidden; /* hide overflow caused by scaling */
-}
-
-.recaptchaWrapper > div {
-  transform: scale(80%);
-  transform-origin: center;
-}
-
-@media screen and (min-width: 375px) {
-  .recaptchaWrapper > div {
-    transform: initial;
-  }
+  border-style: none;
 }
 
 @media screen and (min-width: 768px) {
+  .formSection {
+    max-width: 900px;
+    padding: 0 2%;
+  }
   .contactForm {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -70,5 +58,9 @@
   }
   .contactForm textarea {
     grid-area: 1 / 2 / 2 / 3;
+  }
+
+  .recaptcha {
+    justify-self: center;
   }
 }

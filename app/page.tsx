@@ -12,6 +12,7 @@ import Link from 'next/link';
 import Form from '@/components/Form/Form';
 import { useState } from 'react';
 import CtaButton from '@/components/CtaButton/CtaButton';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,13 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <section className={styles.hero}>
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+          transition={{ duration: 0.8 }}
+          className={styles.hero}
+        >
           <nav className={`${styles.navbar} ${isOpen ? styles.menuOpen : ''}`}>
             <div className={styles.logo}>
               <span className={styles.logoFirstName}>Karin</span>{' '}
@@ -77,8 +84,14 @@ export default function Home() {
               Upplev skapandet - i realtid
             </div>
           </div>
-        </section>
-        <section className={styles.introWrapper}>
+        </motion.section>
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+          transition={{ duration: 0.8 }}
+          className={styles.introWrapper}
+        >
           <div className={styles.introParent}>
             <Image className={styles.headshot} src={headshot} alt='' />
 
@@ -98,8 +111,14 @@ export default function Home() {
               Karin Lilja
             </div>
           </div>
-        </section>
-        <section className={styles.textBlock}>
+        </motion.section>
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+          transition={{ duration: 0.8 }}
+          className={styles.textBlock}
+        >
           <div>
             <p>
               Jag är utbildad inom klassisk realism och arbetar heltid som
@@ -124,8 +143,12 @@ export default function Home() {
               </ul>
             </div>
           </div>
-        </section>
-        <section
+        </motion.section>
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+          transition={{ duration: 0.8 }}
           className={`${styles.textImgWrapper} ${styles.scrollTarget}`}
           id='event'
         >
@@ -161,8 +184,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
-        <section
+        </motion.section>
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+          transition={{ duration: 0.8 }}
           className={`${styles.glossier} ${styles.scrollTarget}`}
           id='kurser'
         >
@@ -180,10 +207,15 @@ export default function Home() {
               Lafabrique.se
             </CtaButton>
           </div>
-        </section>
-        <section>
+        </motion.section>
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
+          transition={{ duration: 0.8 }}
+        >
           <Form />
-        </section>
+        </motion.section>
         <footer className={styles.footer}>
           <div className={styles.footerName}>KARIN</div>
           <div className={styles.footerLastName}>lilja</div>
