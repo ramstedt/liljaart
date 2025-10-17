@@ -17,12 +17,12 @@
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  height: 539px;
+  height: 100vh;
   font-size: 2.875rem;
-  background-position: top right;
+  background-position: 65% 50%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('/heromobile.webp');
+  background-image: url('/heromobile.png');
   background-attachment: fixed;
   position: relative;
   z-index: 1;
@@ -316,10 +316,6 @@
 }
 
 @media screen and (min-width: 375px) {
-  .hero {
-    height: 619px;
-  }
-
   .introParent {
     grid-template-rows: repeat(9, 2.4rem);
   }
@@ -338,10 +334,6 @@
 }
 
 @media screen and (min-width: 425px) {
-  .hero {
-    height: 692px;
-  }
-
   .introParent {
     grid-template-rows: repeat(9, 2.3rem);
   }
@@ -503,9 +495,7 @@
     transition: color 0.5s ease;
     color: rgba(186, 145, 107, 1);
   }
-  .hero {
-    height: 657px;
-  }
+
   .navbar {
     background-color: transparent;
   }
@@ -632,10 +622,11 @@
 
 @media screen and (min-width: 1024px) {
   .hero {
-    height: 781px;
+    height: 943px;
     background-image: url('/hero.webp');
     background-size: auto;
     background-repeat: no-repeat;
+    background-position: top right;
   }
 
   .div1 {
