@@ -1,8 +1,8 @@
 .page {
   display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  min-height: 100svh;
-  gap: 64px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+  row-gap: 0;
   font-family: var(--font-poppins);
 }
 
@@ -685,13 +685,16 @@
 
 @supports (-webkit-touch-callout: none) {
   .hero {
-    background-attachment: scroll;
+    background-attachment: fixed;
   }
 }
 
-/* General touch-device fallback */
 @media (hover: none) and (pointer: coarse) {
   .hero {
-    background-attachment: scroll;
+    background-attachment: fixed;
   }
+}
+
+#__next {
+  min-height: 100%;
 }
