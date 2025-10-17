@@ -691,15 +691,21 @@
   }
 }
 
+/* iOS Safari & touch devices: disable fixed background to prevent zoom/overscale */
 @supports (-webkit-touch-callout: none) {
   .hero {
-    background-attachment: fixed;
+    background-attachment: scroll; /* prevent iOS fixed background bug */
+    background-size: cover; /* keep proper cover scaling */
+    background-position: center top; /* avoid off-center zooming */
   }
 }
 
+/* General touch-device fallback */
 @media (hover: none) and (pointer: coarse) {
   .hero {
-    background-attachment: fixed;
+    background-attachment: scroll; /* prevent blown-up background */
+    background-size: cover;
+    background-position: center top;
   }
 }
 
