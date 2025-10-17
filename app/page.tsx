@@ -90,9 +90,9 @@ export default function Home() {
             </div>
           </nav>
           <div className={styles.heroIngressWrapper}>
-            <div className={styles.heroIngressOne}>
+            <h1 className={styles.heroIngressOne}>
               NÄR ÖGONBLICKET BLIR TILL KONST
-            </div>
+            </h1>
             <div className={styles.heroIngressTwo}>
               Upplev skapandet - i realtid
             </div>

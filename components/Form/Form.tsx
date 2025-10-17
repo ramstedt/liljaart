@@ -85,7 +85,7 @@ export default function Form() {
       >
         <div className={styles.inputFields}>
           <div>
-            <label htmlFor='nameInput'>
+            <label htmlFor='nameInput' className={styles.srOnly}>
               Namn <span aria-hidden='true'>*</span>
             </label>
             <input
@@ -101,7 +101,7 @@ export default function Form() {
           </div>
 
           <div>
-            <label htmlFor='emailInput'>
+            <label htmlFor='emailInput' className={styles.srOnly}>
               Email <span aria-hidden='true'>*</span>
             </label>
             <input
@@ -118,7 +118,9 @@ export default function Form() {
           </div>
 
           <div>
-            <label htmlFor='referrerInput'>Hur hittade du mig?</label>
+            <label htmlFor='referrerInput' className={styles.srOnly}>
+              Hur hittade du mig?
+            </label>
             <input
               id='referrerInput'
               type='text'
@@ -130,7 +132,7 @@ export default function Form() {
           </div>
         </div>
         <div>
-          <label htmlFor='messageInput'>
+          <label htmlFor='messageInput' className={styles.srOnly}>
             Meddelande <span aria-hidden='true'>*</span>
           </label>
           <textarea
@@ -150,7 +152,7 @@ export default function Form() {
           role='group'
           aria-labelledby='captchaLabel'
         >
-          <span id='captchaLabel' className='sr-only'>
+          <span id='captchaLabel' className={styles.srOnly}>
             Spam-skydd (reCAPTCHA) <span aria-hidden='true'>*</span>
           </span>
           <ReCAPTCHA

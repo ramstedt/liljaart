@@ -3,10 +3,16 @@
   max-width: 304px;
 }
 
-.formSection label,
-.formSection span {
-  visibility: hidden;
-  display: none;
+.srOnly {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 1px, 1px);
+  white-space: nowrap;
+  border: 0;
 }
 
 .formSection h2 {
