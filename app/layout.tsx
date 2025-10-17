@@ -10,7 +10,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'Karin Lilja',
-  description: 'Karin Lilja ',
+  description:
+    'Karin Lilja är en konstnär och tatuerare baserad i Göteborg, utbildad vid Florence Academy of Art. Hon specialiserar sig på porträtt och oljemålningar i klassisk stil.',
 };
 
 export default function RootLayout({
