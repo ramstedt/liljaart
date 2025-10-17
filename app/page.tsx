@@ -197,7 +197,9 @@ export default function Home() {
             <h2 className={styles.header2}>Kurser</h2>
             <p>
               Jag erbjuder kurser i akvarell och oljemåleri, både för events och
-              för privatpersoner. Läs mer och boka genom vår ateljés hemsida!
+              för privatpersoner.
+              <br />
+              Läs mer och boka genom vår ateljés hemsida!
             </p>
             <CtaButton
               href='https://lafabrique.se'

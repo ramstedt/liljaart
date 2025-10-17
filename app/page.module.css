@@ -290,8 +290,8 @@
 
 .textBlock div,
 .glossier div {
-  margin: 2rem 5%;
-  max-width: 1440px;
+  margin: 2rem auto;
+  max-width: 1020px;
 }
 
 .header2 {
@@ -635,6 +635,7 @@
 
   .textBlock {
     padding-top: 3rem;
+    margin: 2rem auto;
   }
 }
 
