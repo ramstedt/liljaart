@@ -13,91 +13,14 @@ import Form from '@/components/Form/Form';
 import { useState } from 'react';
 import CtaButton from '@/components/CtaButton/CtaButton';
 import { motion } from 'framer-motion';
+import Hero from '@/components/Hero/Hero';
+import Footer from '@/components/Footer/Footer';
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
-          transition={{ duration: 0.8 }}
-          className={styles.hero}
-        >
-          <nav className={`${styles.navbar} ${isOpen ? styles.menuOpen : ''}`}>
-            <div className={styles.logo}>
-              <span className={styles.logoFirstName}>Karin</span>{' '}
-              <span className={styles.logoLastName}>lilja</span>
-            </div>
-            <div className={styles.navLinks}>
-              <Link href='#om' onClick={() => setIsOpen(false)}>
-                Om
-              </Link>
-              <Link href='#event' onClick={() => setIsOpen(false)}>
-                Event
-              </Link>
-              <Link href='#kurser' onClick={() => setIsOpen(false)}>
-                Kurser
-              </Link>
-              <Link href='#kontakt' onClick={() => setIsOpen(false)}>
-                Kontakt
-              </Link>
-            </div>
-
-            <button
-              className={styles.burger}
-              aria-label='Toggle menu'
-              aria-expanded={isOpen}
-              aria-controls='primaryNav'
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <span />
-            </button>
-
-            <div
-              className={styles.overlay}
-              aria-hidden={!isOpen}
-              style={{
-                pointerEvents: isOpen ? 'auto' : 'none',
-                opacity: isOpen ? 1 : 0,
-              }}
-              onClick={() => isOpen && setIsOpen(false)}
-            />
-
-            <div
-              className={styles.menuPanel}
-              id='primaryNav'
-              aria-hidden={!isOpen}
-              style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
-            >
-              <div className={styles.navLinks}>
-                <Link href='#om' onClick={() => setIsOpen(false)}>
-                  Om
-                </Link>
-                <Link href='#event' onClick={() => setIsOpen(false)}>
-                  Event
-                </Link>
-                <Link href='#kurser' onClick={() => setIsOpen(false)}>
-                  Kurser
-                </Link>
-                <Link href='#kontakt' onClick={() => setIsOpen(false)}>
-                  Kontakt
-                </Link>
-              </div>
-            </div>
-          </nav>
-          <div className={styles.heroIngressWrapper}>
-            <h1 className={styles.heroIngressOne}>
-              NÄR ÖGONBLICKET BLIR TILL KONST
-            </h1>
-            <div className={styles.heroIngressTwo}>
-              Upplev skapandet - i realtid
-            </div>
-          </div>
-        </motion.section>
+        <Hero />
         <motion.section
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -259,38 +182,7 @@ export default function Home() {
         >
           <Form />
         </motion.section>
-        <footer className={styles.footer}>
-          <div className={styles.footerName}>KARIN</div>
-          <div className={styles.footerLastName}>lilja</div>
-          <div className={styles.footerTitle}>
-            Konstnär, instruktör i måleri och tatuerare i Göteborg
-          </div>
-          <div className={styles.socialMedia}>
-            <Link href='/' target='_blank'>
-              <FaInstagram />
-              <small>Instagram</small>
-            </Link>
-          </div>
-          <div className={styles.footerLinks}>
-            <Link href='#om' onClick={() => setIsOpen(false)}>
-              Om
-            </Link>
-            <Link href='#event' onClick={() => setIsOpen(false)}>
-              Event
-            </Link>
-            <Link href='#kurser' onClick={() => setIsOpen(false)}>
-              Kurser
-            </Link>
-            <Link href='#kontakt' onClick={() => setIsOpen(false)}>
-              Kontakt
-            </Link>
-          </div>
-          <small className={styles.attributions}>
-            © 2025 Karin Lilja
-            <br />
-            Sidan är designad och byggd av emma.ramstedt(at)gmail.com
-          </small>
-        </footer>
+        <Footer />
       </main>
     </div>
   );
