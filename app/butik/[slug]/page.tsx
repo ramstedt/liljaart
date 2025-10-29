@@ -1,9 +1,6 @@
-import Hero from '@/components/Hero/Hero';
 import styles from './page.module.css';
 import Image from 'next/image';
-import Link from 'next/link';
 import client from '@/lib/sanityClient';
-import Navbar from '@/components/Navbar/Navbar';
 import Form from '@/components/Form/Form';
 
 async function getShopItem(slug: string) {

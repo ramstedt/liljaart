@@ -2,11 +2,8 @@
 import styles from './Footer.module.css';
 import { FaInstagram } from 'react-icons/fa';
 import Link from 'next/link';
-import { useState } from 'react';
 
 export default function Footer() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <footer className={styles.footer}>
       <div className={styles.footerName}>KARIN</div>
@@ -21,18 +18,11 @@ export default function Footer() {
         </Link>
       </div>
       <div className={styles.footerLinks}>
-        <Link href='#om' onClick={() => setIsOpen(false)}>
-          Om
-        </Link>
-        <Link href='#event' onClick={() => setIsOpen(false)}>
-          Event
-        </Link>
-        <Link href='#kurser' onClick={() => setIsOpen(false)}>
-          Kurser
-        </Link>
-        <Link href='#kontakt' onClick={() => setIsOpen(false)}>
-          Kontakt
-        </Link>
+        <Link href='#om'>Om</Link>
+        <Link href='#event'>Event</Link>
+        <Link href='#kurser'>Kurser</Link>
+        <Link href='/butik'>Butik</Link>
+        <Link href='#kontakt'>Kontakt</Link>
       </div>
       <small className={styles.attributions}>
         © 2025 Karin Lilja
