@@ -5,7 +5,8 @@ export const runtime = 'nodejs';
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, referrer, message, token } = await req.json();
+    const { name, email, referrer, productTitle, message, token } =
+      await req.json();
 
     if (!token) {
       return NextResponse.json(
@@ -25,6 +26,23 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const hasProduct =
+      typeof productTitle === 'string' && productTitle.trim() !== '';
+    const hasReferrer = typeof referrer === 'string' && referrer.trim() !== '';
+    const contextLabel = hasProduct ? 'Produkt' : 'Hur hittade du mig?';
+    const contextValue = hasProduct
+      ? productTitle
+      : hasReferrer
+        ? referrer
+        : 'Ej angivet';
+
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -40,7 +58,7 @@ export async function POST(req: NextRequest) {
       text: `
         Namn: ${name}
         Email: ${email}
-        Hur hittade du mig?: ${referrer}
+        ${contextLabel}: ${contextValue}
         
         Meddelande:
         ${message}

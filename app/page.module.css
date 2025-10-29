@@ -412,7 +412,9 @@
   width: 22px;
   height: 2px;
   background: currentColor;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
   position: relative;
 }
 .burger span::before {
@@ -459,7 +461,9 @@
 .menuPanel .navLinks a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
   opacity: 0.95;
 }
 .menuPanel .navLinks a:hover {
@@ -505,7 +509,9 @@
   .navLinks a {
     color: inherit;
     text-decoration: none;
-    transition: color 0.2s ease, opacity 0.2s ease;
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
   }
   .navLinks a:hover {
     color: rgba(186, 145, 107, 1);

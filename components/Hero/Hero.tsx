@@ -1,11 +1,8 @@
+'use client';
 import styles from './Hero.module.css';
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Navbar from '../Navbar/Navbar';
 
 export default function Hero() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <motion.section
       initial={{ opacity: 0, y: 40 }}
@@ -14,7 +11,6 @@ export default function Hero() {
       transition={{ duration: 0.8 }}
       className={styles.hero}
     >
-      <Navbar />
       <div className={styles.heroIngressWrapper}>
         <h1 className={styles.heroIngressOne}>
           NÄR ÖGONBLICKET BLIR TILL KONST

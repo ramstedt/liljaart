@@ -1,0 +1,167 @@
+.introWrapper {
+  margin: 0 3%;
+}
+
+.introParent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(9, 1.2rem);
+  grid-row-gap: 20px;
+  justify-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.headshot {
+  grid-area: 3 / 1 / 12 / 7;
+  width: fit-content;
+  max-width: calc(100vw - 39%);
+  object-fit: scale-down;
+  justify-self: center;
+  height: auto;
+}
+
+.imgOne {
+  grid-area: 14 / 1 / 18 / 2;
+  max-width: 100%;
+  height: auto;
+  align-self: center;
+  margin-left: 15%;
+  justify-self: start;
+}
+
+.imgTwo {
+  grid-area: 14 / 2 / 18 / 4;
+  max-width: 70%;
+  margin-right: 10%;
+  height: auto;
+  justify-self: end;
+}
+
+.introIngress {
+  grid-area: 11 / 1 / 14 / 4;
+  font-family: 'Boska';
+  font-style: italic;
+  font-size: 1.375rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.introHello {
+  grid-area: 1 / 1 / 5 / 4;
+  font-size: 2.5rem;
+  font-family: 'Boska';
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  text-align: center;
+}
+
+.scrollTarget {
+  /* scroll-margin-top: var(--nav-height, 80px); */
+  scroll-behavior: smooth;
+}
+
+.textBlock {
+  padding-bottom: 2rem;
+  margin: 0 5%;
+}
+
+.textBlock div {
+  margin: 2rem auto;
+  max-width: 1020px;
+  text-align: justify;
+}
+
+.header2 {
+  text-align: center;
+  font-family: 'Boska';
+  font-size: clamp(2rem, 5vw + 0.5rem, 2.5rem);
+  font-weight: 600;
+  line-height: 2.6rem;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+
+/* ----- Media queries used by AboutCard ----- */
+@media screen and (min-width: 375px) {
+  .introParent {
+    grid-template-rows: repeat(9, 2.4rem);
+  }
+  .headshot {
+    max-width: calc(100vw - 29%);
+  }
+  .introIngress {
+    font-size: 2rem;
+    grid-area: 10 / 1 / 14 / 4;
+  }
+  .introHello {
+    font-size: 3.5rem;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .introParent {
+    grid-template-rows: repeat(9, 2.3rem);
+  }
+  .introIngress {
+    grid-area: 12 / 1 / 14 / 4;
+  }
+}
+
+@media (min-width: 768px) {
+  .introWrapper {
+    margin: 0;
+  }
+  .introParent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(7, 60px);
+    padding-bottom: 2rem;
+    max-height: 945px;
+    grid-column-gap: 0rem;
+    grid-row-gap: 2rem;
+    justify-items: start;
+    padding-top: 5rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  .headshot {
+    grid-area: 1 / 2 / 6 / 5;
+    width: 90%;
+    max-width: 510px;
+  }
+  .introHello {
+    grid-area: 1 / 1 / 2 / 4;
+    text-align: start;
+    margin-left: 15%;
+  }
+  .imgOne {
+    grid-area: 4 / 1 / 5 / 2;
+    margin-left: 0;
+    justify-self: initial;
+    align-self: initial;
+  }
+  .imgTwo {
+    grid-area: 2 / 5 / 4 / 6;
+    margin: 0;
+    max-width: 100%;
+  }
+  .introIngress {
+    grid-area: 6 / 4 / 8 / 6;
+    font-size: 2.125rem;
+    font-weight: 600;
+    text-align: left;
+    padding-top: 2rem;
+  }
+  .utbildning {
+    width: fit-content;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .textBlock {
+    padding-top: 3rem;
+    margin: 2rem auto;
+  }
+}

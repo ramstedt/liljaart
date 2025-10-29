@@ -63,6 +63,13 @@
   width: 100%;
 }
 
+.disabled {
+  pointer-events: none;
+  background-color: rgb(242, 242, 242);
+  color: rgb(95, 95, 95);
+  border: 1px solid rgb(200, 200, 200) !important;
+}
+
 @media screen and (min-width: 768px) {
   .formSection {
     max-width: 900px;

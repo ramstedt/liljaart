@@ -1,0 +1,23 @@
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+  row-gap: 0;
+  font-family: var(--font-poppins);
+  background-color: var(--foreground);
+  padding-top: 120px;
+  padding: 0 3%;
+  color: var(--background);
+  padding-top: var(--nav-height);
+}
+.page,
+.main {
+  scroll-behavior: smooth;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: justify;
+}

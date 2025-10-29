@@ -1,0 +1,175 @@
+.whiteBg {
+  background-color: #fff;
+}
+
+.textImgWrapper {
+  background-color: #fff;
+  padding-top: 5rem;
+  color: #000;
+}
+
+.scrollTarget {
+  scroll-behavior: smooth;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-column-gap: 0px;
+  grid-row-gap: 20px;
+  align-items: start;
+  justify-items: start;
+  position: relative;
+  max-width: 798px;
+  margin: auto;
+}
+
+.div1 {
+  position: relative;
+  grid-area: 4 / 1 / 6 / 4;
+  width: 100%;
+  max-height: 235px;
+  overflow: hidden;
+}
+.div1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.div1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.695);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.div2 {
+  grid-area: 3 / 2 / 5 / 3;
+  max-width: 260px;
+  height: auto;
+  z-index: 2;
+}
+
+.div3 {
+  grid-area: 1 / 1 / 3 / 4;
+  margin: 0 10%;
+  font-family: var(--font-poppins);
+  max-width: 420px;
+  align-self: center;
+}
+.div3 h2 {
+  font-family: 'Boska';
+  font-size: 2.125rem;
+  font-weight: 600;
+  line-height: 2.2rem;
+  margin: 1rem 0;
+}
+
+.textImgIngress {
+  font-family: 'Mattone-Regular';
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.textImgIngress2 {
+  font-family: 'Boska';
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.checkList {
+  font-size: 0.9rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .textImgWrapper {
+    padding-bottom: 2rem;
+  }
+
+  .parent {
+    padding: 5rem 0;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(3, 177.6px);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-items: start;
+    justify-items: start;
+    color: #000;
+  }
+
+  .div1 {
+    grid-area: 1 / 1 / 4 / 4;
+    justify-self: stretch;
+    align-self: stretch;
+    width: 60vw;
+    height: 100vh;
+    position: relative;
+    margin-left: -30vw;
+    margin-right: -30vw;
+    object-fit: cover;
+    display: block;
+    max-width: none;
+    max-height: 100%;
+  }
+  .div1 img {
+    height: 100%;
+  }
+
+  .div2 {
+    grid-area: 2 / 2 / 3 / 4;
+    max-width: 257px;
+    height: auto;
+    justify-self: end;
+    align-self: center;
+    object-fit: scale-down;
+    z-index: 4;
+  }
+
+  .div3 {
+    grid-area: 1 / 5 / 4 / 9;
+    justify-self: center;
+    align-self: center;
+  }
+
+  .checkmark {
+    position: relative;
+    padding-left: 3rem;
+    margin: 2rem 0;
+  }
+  .checkmark::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 2em;
+    height: 2em;
+    background: url('/checkmark.svg') no-repeat center / contain;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .textImgWrapper {
+    padding-top: 3rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .div1 {
+    width: 65vw;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .div1 {
+    width: 65vw;
+    height: 100%;
+  }
+}
