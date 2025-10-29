@@ -46,7 +46,7 @@ export default async function Product({
         ) : (
           <p>Produkten hittades inte.</p>
         )}
-        {!item.isSold && (
+        {item && !item.isSold && (
           <div>
             <Form
               heading='Intresserad av att köpa?'
