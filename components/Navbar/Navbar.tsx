@@ -64,12 +64,8 @@ export default function Navbar() {
     const timeout = setTimeout(update, 0);
 
     window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('hashchange', reinitAndUpdate, {
-      passive: true,
-    } as any);
-    window.addEventListener('pageshow', reinitAndUpdate, {
-      passive: true,
-    } as any);
+    window.addEventListener('hashchange', reinitAndUpdate, { passive: true });
+    window.addEventListener('pageshow', reinitAndUpdate, { passive: true });
     window.addEventListener('resize', update, { passive: true });
 
     const vv = window.visualViewport;
@@ -80,12 +76,12 @@ export default function Navbar() {
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(timeout);
-      window.removeEventListener('scroll', update as any);
-      window.removeEventListener('hashchange', reinitAndUpdate as any);
-      window.removeEventListener('pageshow', reinitAndUpdate as any);
-      window.removeEventListener('resize', update as any);
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('hashchange', reinitAndUpdate);
+      window.removeEventListener('pageshow', reinitAndUpdate);
+      window.removeEventListener('resize', update);
       if (vv) {
-        vv.removeEventListener('resize', update as any);
+        vv.removeEventListener('resize', update);
       }
     };
   }, [isOpen]);
