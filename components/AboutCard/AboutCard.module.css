@@ -82,7 +82,24 @@
   text-transform: uppercase;
 }
 
-/* ----- Media queries used by AboutCard ----- */
+.utbildning ul li {
+  position: relative;
+  padding-left: 2rem;
+  margin: 2rem 0;
+}
+
+.utbildning ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 1.2em;
+  height: 1.2em;
+  background-color: currentColor;
+  mask: url('/diamond.svg') no-repeat center / contain;
+  -webkit-mask: url('/diamond.svg') no-repeat center / contain;
+}
+
 @media screen and (min-width: 375px) {
   .introParent {
     grid-template-rows: repeat(9, 2.4rem);

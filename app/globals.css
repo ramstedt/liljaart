@@ -17,7 +17,8 @@
 */
 @font-face {
   font-family: 'Boska';
-  src: url('/fonts/Boska-Regular.woff2') format('woff2'),
+  src:
+    url('/fonts/Boska-Regular.woff2') format('woff2'),
     url('/fonts/Boska-Regular.woff') format('woff'),
     url('/fonts/Boska-Regular.ttf') format('truetype');
   font-weight: 400;
@@ -26,7 +27,8 @@
 }
 @font-face {
   font-family: 'Boska';
-  src: url('/fonts/Boska-Italic.woff2') format('woff2'),
+  src:
+    url('/fonts/Boska-Italic.woff2') format('woff2'),
     url('/fonts/Boska-Italic.woff') format('woff'),
     url('/fonts/Boska-Italic.ttf') format('truetype');
   font-weight: 400;
@@ -35,7 +37,8 @@
 }
 @font-face {
   font-family: 'Boska';
-  src: url('/fonts/Boska-Medium.woff2') format('woff2'),
+  src:
+    url('/fonts/Boska-Medium.woff2') format('woff2'),
     url('/fonts/Boska-Medium.woff') format('woff'),
     url('/fonts/Boska-Medium.ttf') format('truetype');
   font-weight: 500;
@@ -44,7 +47,8 @@
 }
 @font-face {
   font-family: 'Boska';
-  src: url('/fonts/Boska-MediumItalic.woff2') format('woff2'),
+  src:
+    url('/fonts/Boska-MediumItalic.woff2') format('woff2'),
     url('/fonts/Boska-MediumItalic.woff') format('woff'),
     url('/fonts/Boska-MediumItalic.ttf') format('truetype');
   font-weight: 500;
@@ -53,7 +57,8 @@
 }
 @font-face {
   font-family: 'Boska';
-  src: url('/fonts/Boska-Bold.woff2') format('woff2'),
+  src:
+    url('/fonts/Boska-Bold.woff2') format('woff2'),
     url('/fonts/Boska-Bold.woff') format('woff'),
     url('/fonts/Boska-Bold.ttf') format('truetype');
   font-weight: 700;
@@ -62,7 +67,8 @@
 }
 @font-face {
   font-family: 'Boska';
-  src: url('/fonts/Boska-BoldItalic.woff2') format('woff2'),
+  src:
+    url('/fonts/Boska-BoldItalic.woff2') format('woff2'),
     url('/fonts/Boska-BoldItalic.woff') format('woff'),
     url('/fonts/Boska-BoldItalic.ttf') format('truetype');
   font-weight: 700;
@@ -133,49 +139,16 @@ ul {
   padding-left: 0;
 }
 
-ul li {
-  position: relative;
-  padding-left: 2rem;
-  margin: 2rem 0;
-}
-
-ul li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 2px;
-  width: 1.2em;
-  height: 1.2em;
-  background-color: currentColor;
-  mask: url('/diamond.svg') no-repeat center / contain;
-  -webkit-mask: url('/diamond.svg') no-repeat center / contain;
-}
 section {
   opacity: 1;
   visibility: visible;
 }
 
-/* Ensure media don’t cause layout shifts or overflow */
-img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* Improve keyboard focus visibility */
 :focus-visible {
   outline: 2px solid #9cc0ff;
   outline-offset: 2px;
 }
 
-/* Avoid horizontal jiggle from 100vw on systems with scrollbars */
 html {
   scrollbar-gutter: stable both-edges;
 }
