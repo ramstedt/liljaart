@@ -15,7 +15,7 @@ async function getShopItems() {
   return await client.fetch(query);
 }
 
-export default async function Butik() {
+export default async function Gallery() {
   const items: {
     _id: string;
     title: string;
@@ -51,7 +51,7 @@ export default async function Butik() {
                     </div>
                   </>
                 ) : (
-                  <Link href={`/butik/${item.slug.current}`}>
+                  <Link href={`/galleri/${item.slug.current}`}>
                     <div className={styles.imgWrapper}>
                       <Image
                         src={item.imageUrl || '/placeholder.webp'}

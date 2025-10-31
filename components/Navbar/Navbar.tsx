@@ -107,8 +107,8 @@ export default function Navbar() {
           <Link href='/#kurser' onClick={() => setIsOpen(false)}>
             Kurser
           </Link>
-          <Link href='/butik' onClick={() => setIsOpen(false)}>
-            Butik
+          <Link href='/galleri' onClick={() => setIsOpen(false)}>
+            Galleri
           </Link>
           <Link href='/#kontakt' onClick={() => setIsOpen(false)}>
             Kontakt
@@ -150,8 +150,8 @@ export default function Navbar() {
             <Link href='/#kurser' onClick={() => setIsOpen(false)}>
               Kurser
             </Link>
-            <Link href='/butik' onClick={() => setIsOpen(false)}>
-              Butik
+            <Link href='/galleri' onClick={() => setIsOpen(false)}>
+              Galleri
             </Link>
             <Link href='/#kontakt' onClick={() => setIsOpen(false)}>
               Kontakt

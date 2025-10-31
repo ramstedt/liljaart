@@ -1,6 +1,6 @@
 export const shop = {
   name: 'shop',
-  title: 'Butik',
+  title: 'Galleri',
   type: 'document',
   fields: [
     {

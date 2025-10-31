@@ -21,7 +21,7 @@ export default function Footer() {
         <Link href='#om'>Om</Link>
         <Link href='#event'>Event</Link>
         <Link href='#kurser'>Kurser</Link>
-        <Link href='/butik'>Butik</Link>
+        <Link href='/galleri'>Galleri</Link>
         <Link href='#kontakt'>Kontakt</Link>
       </div>
       <small className={styles.attributions}>

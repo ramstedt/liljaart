@@ -15,7 +15,7 @@ export const structure = (S) =>
         )
         .icon(PiHouseLineFill),
       S.listItem()
-        .title('Butik')
+        .title('Galleri')
         .schemaType('shop')
         .icon(GiShoppingBag)
         .child(S.documentTypeList('shop').title('Föremål till salu')),
