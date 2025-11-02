@@ -6,20 +6,20 @@ import TextButtonCard from '@/components/TextButtonCard/TextButtonCard';
 import Form from '@/components/Form/Form';
 import client from '@/lib/sanityClient';
 import { groq } from 'next-sanity';
+import type { ComponentType } from 'react';
 
-type PageSection = {
-  _type: string;
-  [key: string]: any;
+export const dynamic = 'force-dynamic';
+
+type BlockComponents = {
+  heroSection: ComponentType<React.ComponentProps<typeof Hero>>;
 };
 
-type PageData = {
-  title: string;
-  sections?: PageSection[];
-};
-
-const blockComponents: Record<string, React.FC<any>> = {
+const blockComponents: BlockComponents = {
   heroSection: Hero,
 };
+
+type PageSection = { _type: 'heroSection' } & React.ComponentProps<typeof Hero>;
+
 export default async function Home() {
   const page = await client.fetch(
     groq`*[_type == "landingPage" && _id == "25f7f7f1-57b9-426d-a06d-ceac03fb37fb"][0]{
@@ -35,8 +35,14 @@ export default async function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         {page?.sections?.map((block: PageSection, i: number) => {
-          const Component = blockComponents[block._type];
-          return Component ? <Component key={i} {...block} /> : null;
+          switch (block._type) {
+            case 'heroSection': {
+              const { _type, ...props } = block;
+              return <Hero key={i} {...props} />;
+            }
+            default:
+              return null;
+          }
         })}
         <AboutCard />
         <PitchCard />
