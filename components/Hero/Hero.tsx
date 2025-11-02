@@ -2,7 +2,12 @@
 import styles from './Hero.module.css';
 import { motion } from 'framer-motion';
 
-export default function Hero() {
+export type HeroProps = {
+  title: string;
+  ingress: string;
+};
+
+export default function Hero({ title, ingress }: HeroProps) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 40 }}
@@ -12,12 +17,8 @@ export default function Hero() {
       className={styles.hero}
     >
       <div className={styles.heroIngressWrapper}>
-        <h1 className={styles.heroIngressOne}>
-          NÄR ÖGONBLICKET BLIR TILL KONST
-        </h1>
-        <div className={styles.heroIngressTwo}>
-          Upplev skapandet - i realtid
-        </div>
+        <h1 className={styles.heroIngressOne}>{title}</h1>
+        <div className={styles.heroIngressTwo}>{ingress}</div>
       </div>
     </motion.section>
   );

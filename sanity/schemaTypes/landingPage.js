@@ -10,5 +10,14 @@ export const landingPage = {
       type: 'string',
       validation: (Rule) => Rule.required().min(2).max(25),
     },
+    {
+      name: 'sections',
+      type: 'array',
+      title: 'Page sections',
+      of: [
+        { type: 'heroSection' },
+        // { type: 'faqSection' },
+      ],
+    },
   ],
 };
