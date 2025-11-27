@@ -22,7 +22,7 @@ export default function Footer() {
         <Link href='#event'>Event</Link>
         <Link href='#kurser'>Kurser</Link>
         <Link href='/galleri'>Galleri</Link>
-        <Link href='#kontakt'>Kontakt</Link>
+        <Link href='/#kontakt'>Kontakt</Link>
       </div>
       <small className={styles.attributions}>
         © 2025 Karin Lilja

@@ -28,17 +28,24 @@ export default async function Product({
         {item ? (
           <div className={styles.product}>
             {item.imageUrl && (
-              <Image
-                src={item.imageUrl}
-                alt={item.title}
-                width={600}
-                height={600}
-              />
+              <div className={styles.productImage}>
+                <Image
+                  src={item.imageUrl}
+                  alt={item.title}
+                  width={900}
+                  height={900}
+                  sizes='(max-width: 768px) 90vw, 900px'
+                  style={{ width: '100%', height: 'auto', maxWidth: '900px' }}
+                />
+              </div>
             )}
-            <h1>{item.title}</h1>
-            <p>{item.price} kr</p>
-            <p>{item.description}</p>
-            {item.isSold && <p className={styles.soldTag}>Såld</p>}
+            <div className={styles.productInfo}>
+              {' '}
+              <h1>{item.title}</h1>
+              <p>{item.price} kr</p>
+              <p>{item.description}</p>
+              {item.isSold && <p className={styles.soldTag}>Såld</p>}
+            </div>
           </div>
         ) : (
           <p>Produkten hittades inte.</p>
