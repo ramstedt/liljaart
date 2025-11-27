@@ -87,6 +87,21 @@
   padding-left: 0;
 }
 
+.checkmark {
+  position: relative;
+  padding-left: 3rem;
+  margin: 2rem 0;
+}
+.checkmark::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 2em;
+  height: 2em;
+  background: url('/checkmark.svg') no-repeat center / contain;
+}
+
 @media (min-width: 768px) {
   .textImgWrapper {
     padding-bottom: 2rem;
@@ -136,27 +151,17 @@
     grid-area: 1 / 5 / 4 / 9;
     justify-self: center;
     align-self: center;
-  }
-
-  .checkmark {
-    position: relative;
-    padding-left: 3rem;
-    margin: 2rem 0;
-  }
-  .checkmark::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.6em;
-    width: 2em;
-    height: 2em;
-    background: url('/checkmark.svg') no-repeat center / contain;
+    margin: 0;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .textImgWrapper {
     padding-top: 3rem;
+  }
+
+  .div3 {
+    width: 500px;
   }
 }
 
